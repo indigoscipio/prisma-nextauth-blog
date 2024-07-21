@@ -49,6 +49,7 @@ export async function PATCH(req: NextRequest, res: NextResponse) {
   if (!session || !session.user) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
+
   if (body.authorId !== session.user.id) {
     return NextResponse.json({ message: "Forbidden" }, { status: 403 });
   }

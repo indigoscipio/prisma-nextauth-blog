@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Post } from "@prisma/client";
+import { PostDetailProps } from "@/types/maintypes";
+import type { Post, Session, User } from "@prisma/client";
 import Link from "next/link";
 
-const PostDetail = ({ post, session }: Post) => {
+const PostDetail = ({ post, session }: PostDetailProps) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const router = useRouter();
 

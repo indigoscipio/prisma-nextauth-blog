@@ -60,7 +60,7 @@ const EditPostForm = ({ post }: Props) => {
         <textarea
           id="content"
           name="content"
-          value={content}
+          value={content as string}
           onChange={(e) => setContent(e.target.value)}
           rows={4}
           className="form-textarea"

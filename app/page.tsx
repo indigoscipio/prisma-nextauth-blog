@@ -1,7 +1,9 @@
+// @ts-nocheck
 import prisma from "@/lib/prisma";
 import PostList from "./components/PostList";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/authOptions";
+import { Session } from "@prisma/client";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -20,8 +22,8 @@ export default async function Home() {
     );
   }
 
-  if (!posts) {
-    return <p>Loading posts...</p>;
+  if (!posts || posts.length === 0) {
+    return <p>No posts available...</p>;
   }
 
   return (

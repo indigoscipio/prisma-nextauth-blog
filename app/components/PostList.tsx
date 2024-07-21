@@ -1,9 +1,10 @@
 import React from "react";
-import type { Post } from "@prisma/client";
+import type { Post, User } from "@prisma/client";
 import Link from "next/link";
+import { PostWithAuthor } from "@/types/maintypes";
 
 interface Posts {
-  posts: Post[];
+  posts: PostWithAuthor[];
 }
 
 const PostList = ({ posts }: Posts) => {
@@ -13,7 +14,7 @@ const PostList = ({ posts }: Posts) => {
 
   return (
     <ul className="flex flex-col gap-2">
-      {posts.map((post) => (
+      {posts.map((post: PostWithAuthor) => (
         <li key={post.id} className="bg-gray-100 p-4">
           <div>
             <Link href={`/posts/${post.id}`}>

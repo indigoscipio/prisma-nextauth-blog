@@ -2,8 +2,9 @@ import GoogleProvider from "next-auth/providers/google";
 
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "./prisma";
+import { NextAuthOptions } from "@/node_modules/next-auth/index";
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   session: {
     strategy: "jwt",

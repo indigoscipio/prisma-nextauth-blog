@@ -18,7 +18,7 @@ const CreatePostForm = (props: Props) => {
     return <p>Loading...</p>;
   }
 
-  if (!session || status === "unauthenticated") {
+  if (!session) {
     return <p>Access Denied. You are not authenticated</p>;
   }
 
@@ -54,7 +54,9 @@ const CreatePostForm = (props: Props) => {
       setTitle("");
       setContent("");
     } catch (error) {
-      setError(error.message);
+      if (error instanceof Error) {
+        setError(error.message);
+      }
     } finally {
       setIsSubmitting(false);
     }

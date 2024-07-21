@@ -10,9 +10,9 @@ interface Params {
 }
 
 const EditPostPage = async ({ params }: Params) => {
-  const post: Post = await prisma.post.findFirst({
+  const post = await prisma.post.findFirst({
     where: {
-      id: params.id,
+      id: params.id as string,
     },
   });
 

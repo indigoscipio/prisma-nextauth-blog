@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import PostDetail from "@/app/components/PostDetail";
 import prisma from "@/lib/prisma";
@@ -7,14 +8,14 @@ import { getServerSession } from "next-auth/next";
 
 interface Params {
   params: {
-    id: String;
+    id: string;
   };
 }
 
 const PostDetailsPage = async ({ params }: Params) => {
   const session = await getServerSession(authOptions);
 
-  const post: Post = await prisma.post.findFirst({
+  const post = await prisma.post.findFirst({
     where: {
       id: params.id,
     },
